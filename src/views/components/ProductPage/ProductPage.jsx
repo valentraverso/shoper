@@ -3,7 +3,7 @@ import './ProductPage.css';
 import { AddProduct } from '../../../utils/utils';
 import { QuantityCartContext } from '../../../context/QuantityCartContext';
 import AddToCart from '../Buttons/AddToCart/AddToCart';
-import MsgOk from '../PopUp/MsgOk/MsgOk';
+import MsgFullWidth from '../PopUp/MsgFullWidth/MsgFullWidth';
 
 export default function ProductPage({ objProduct }) {
     const [quantity, setQuantity] = useState(0);
@@ -16,7 +16,7 @@ export default function ProductPage({ objProduct }) {
     }
 
     const rest = () => {
-        if(quantity <= 0){
+        if (quantity <= 0) {
             return;
         }
         setQuantity(prevState => prevState - 1);
@@ -33,9 +33,9 @@ export default function ProductPage({ objProduct }) {
     return (
         <section>
             {
-                msgReady ? 
-                <MsgOk msg='Products add to cart!' /> :
-                null
+                msgReady ?
+                    <MsgFullWidth msg='Products add to cart!' type='success' /> :
+                    null
             }
             <div className="top-product-section__div">
                 <div className='top-product-img__div'>
@@ -45,14 +45,14 @@ export default function ProductPage({ objProduct }) {
                     <h1>{title}</h1>
                     <div className='add-quantity-product__div'>
                         <div className='add-quantity-product-title__div'>
-                        <span>Quantity</span>
+                            <span>Quantity</span>
                         </div>
                         <span onClick={rest} className="quantity-handler__span">-</span>
-                        <input type='number' value={quantity === 0 ? 0 : quantity} min='0' readOnly/>
+                        <input type='number' value={quantity === 0 ? 0 : quantity} min='0' readOnly />
                         <span className="quantity-handler__span" onClick={sum}>+</span>
                     </div>
                     <div onClick={() => quantity !== 0 ? add() : null}>
-                    <AddToCart text='Add To Cart' />
+                        <AddToCart text='Add To Cart' />
                     </div>
                 </div>
             </div>
