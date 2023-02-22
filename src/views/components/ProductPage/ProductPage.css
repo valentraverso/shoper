@@ -16,3 +16,12 @@
 .top-product-img__img{
     width: 100%;
 }
+
+.quantity-handler__span{
+    margin: 0 5px;
+    
+    font-size: 20px;
+    font-weight: 800;
+
+    cursor: pointer;
+}

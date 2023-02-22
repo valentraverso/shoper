@@ -47,9 +47,9 @@ export default function ProductPage({ objProduct }) {
                         <div className='add-quantity-product-title__div'>
                         <span>Quantity</span>
                         </div>
-                        <span onClick={rest}>-</span>
+                        <span onClick={rest} className="quantity-handler__span">-</span>
                         <input type='number' value={quantity === 0 ? 0 : quantity} min='0' readOnly/>
-                        <span onClick={sum}>+</span>
+                        <span className="quantity-handler__span" onClick={sum}>+</span>
                     </div>
                     <div onClick={() => quantity !== 0 ? add() : null}>
                     <AddToCart text='Add To Cart' />
