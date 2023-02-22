@@ -1,0 +1,10 @@
+.button-add-to-card__div{
+    width: 100%;
+    background: #D8CC34;
+
+    text-align:center;
+
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+}

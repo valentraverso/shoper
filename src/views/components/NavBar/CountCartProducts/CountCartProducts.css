@@ -1,0 +1,11 @@
+.cart-menu__div{
+    position: relative;
+    max-width: 100%;
+}
+
+.cart-menu-quantity__span{ 
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 10px;
+}

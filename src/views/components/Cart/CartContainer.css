@@ -1,0 +1,6 @@
+.cart-container__section{
+    display: flex;
+    flex-direction: row;
+
+    margin: 2% 10%;
+}

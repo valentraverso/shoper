@@ -1,0 +1,52 @@
+.heroes-section__section{
+    margin: 2% 10%;
+}
+
+.heroe-section-row__div{
+    display: flex;
+    flex-direction: row;
+
+    width:100%;
+
+    color: #fff;
+    cursor: pointer;
+}
+
+.heroe-section-50__div--first{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width:50%;
+    height: 15rem;
+
+    background-image: url('https://www.impulseactivities.com/wp-content/uploads/2020/12/GA18_DY3_D5_0548-2%C2%A9JohnCarter-1-scaled.jpg');
+    background-size: cover;
+    background-position:center;   
+}
+
+.heroe-section-50__div--second{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 50%;
+    height: 15rem;
+
+    background-image: url('https://cdn.shopify.com/s/files/1/0012/8647/1793/files/10-cosas-del-windsurf-Antoine-Albeau.jpg?v=1618217977');
+    background-size: cover;  
+    background-position:center;                      
+}
+
+.heroe-section-100__div--third{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 30rem;
+
+    background-image: url('https://www.ion-club.net/wp-content/uploads/2022/04/ION-CLUB-SAL-WINDSURF-BEACH-scaled.jpg');
+    background-size: cover;
+    background-position:center;
+}

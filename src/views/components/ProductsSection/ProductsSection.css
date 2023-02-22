@@ -1,0 +1,11 @@
+.products-section__section{
+    margin: 2% 10%;
+}
+
+.products-section-cards-4__div{
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    cursor: pointer;
+}

@@ -1,0 +1,10 @@
+.menu-list__span{
+    margin:0px 19px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.menu-list__span:hover{
+    color:#0a4866;
+    font-weight: 600;
+}

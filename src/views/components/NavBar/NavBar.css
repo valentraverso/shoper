@@ -1,0 +1,19 @@
+.navbar__header{
+    display:flex;
+
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 50px;
+    padding: 0 10%;
+    
+    border-bottom: 1px #000 solid;
+}
+
+.img-navbar__header{
+    width: 2.5rem;
+    height: 100%;
+}
+
+.menu-list__div{display: flex;}
