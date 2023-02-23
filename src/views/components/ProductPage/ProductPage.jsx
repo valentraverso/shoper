@@ -48,7 +48,7 @@ export default function ProductPage({ objProduct }) {
                             <span>Quantity</span>
                         </div>
                         <span onClick={rest} className="quantity-handler__span">-</span>
-                        <input type='number' value={quantity === 0 ? 0 : quantity} min='0' readOnly />
+                        <span className='quantity-visor__span'>{quantity === 0 ? 0 : quantity}</span>
                         <span className="quantity-handler__span" onClick={sum}>+</span>
                     </div>
                     <div onClick={() => quantity !== 0 ? add() : null}>

@@ -17,11 +17,25 @@
     width: 100%;
 }
 
+.add-quantity-product__div{
+    user-select: none;
+}
+
+.add-quantity-product-title__div{
+    margin-bottom:10px;
+}
+
 .quantity-handler__span{
     margin: 0 5px;
     
     font-size: 20px;
-    font-weight: 800;
 
     cursor: pointer;
+}
+
+.quantity-visor__span{
+    padding: 5px;
+    margin: 20px;
+    border: 1px #ccc solid;
+    border-style: dashed;
 }

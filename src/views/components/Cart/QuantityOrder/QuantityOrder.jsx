@@ -43,9 +43,9 @@ export default function QuantityOrder({deleteMsg}) {
                                     <div className="product-cart-info__div">
                                         <p>{title}</p>
                                         <p>Total price: € {totalPrice}</p>
-                                        <span onClick={() => handleRest(id, 1)}>-</span>
+                                        <span className='quantity-handler__span' onClick={() => handleRest(id, 1)}>-</span>
                                         <span>{quantity}</span>
-                                        <span onClick={() => handleAdd(id, 1)}>+</span>
+                                        <span className='quantity-handler__span' onClick={() => handleAdd(id, 1)}>+</span>
                                     </div>
                                     <div className='product-cart-options__div'>
                                         <p onClick={() => handleDelete(id, quantity)}><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
