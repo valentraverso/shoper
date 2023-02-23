@@ -1,9 +1,11 @@
+.product-page__section{
+    margin: 2% 10%;
+}
+
 .top-product-section__div{
     display:grid;
 
     grid-template-columns:40% 60%;
-
-    margin: 2% 10%;
 }
 
 .top-product-info__div{

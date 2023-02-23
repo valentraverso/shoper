@@ -10,7 +10,7 @@ function ProductsSection({ catProduct , objProducts, qCards }) {
             <div className="products-section-title__div">
                 <h1>{catProduct}</h1>
             </div>
-            <div className={productsCards}>
+            <div className={productsCards} onClick={() => scrollTo(top)}>
                 {
                     objProducts.length > 0 ? objProducts.map((product, index) =>{
                         return(

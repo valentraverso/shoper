@@ -112,4 +112,10 @@ const getQuantityCart = () => {
     return quantity;
 }
 
-export { localStorage, AddProduct, getCart, getQuantityCart, RestProduct, DeleteProductCart };
+const getProductsCategory = (prodArr, catProduct) => {
+    const response = prodArr.filter(product => product.category === catProduct);
+
+    return response;
+}
+
+export { localStorage, AddProduct, getCart, getQuantityCart, RestProduct, DeleteProductCart, getProductsCategory };
