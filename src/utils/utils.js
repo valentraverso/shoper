@@ -82,7 +82,7 @@ const getCart = (prodArr) => {
     const JsonCart = JSON.parse(localStorage.getItem('cart'));
 
     const filterById = (obj) => {
-        if (JsonCart.find(product => product.idProduct === obj.id)) {
+        if (JsonCart?.find(product => product.idProduct === obj.id)) {
             return true
         } else {
             return false;

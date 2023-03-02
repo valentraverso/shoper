@@ -3,7 +3,7 @@ import { AddProduct, getProductsCategory } from '../../../../utils/utils';
 import useCart from '../../../../hooks/useCart';
 import AddToCart from '../../Buttons/AddToCart/AddToCart';
 import MsgFullWidth from '../../PopUp/MsgFullWidth/MsgFullWidth';
-import ProductsSection from '../../ProductsSection/ProductsSection';
+import ProductsSection from '../ProductsSection/ProductsSection';
 import prodArr from '../../../../mocks/prodArr';
 import './ProductPage.css';
 
@@ -11,7 +11,7 @@ export default function ProductPage({ objProduct }) {
     const [quantity, setQuantity] = useState(0);
     const [msgReady, setMsgReady] = useState(false);
     const [quantityCart, setQuantityCart] = useCart();
-    
+
     const { id, title, img, category } = objProduct;
 
     const sum = () => {
