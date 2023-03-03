@@ -1,12 +1,17 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useReducer } from "react";
 
-export const QuantityCartContext = createContext(null);
+// export const QuantityCartContext = createContext(null);
+const initialValue = createContext({
+    cart: 0,
+    user: null,
+    role: null,
+});
 
 export default function CartContext({ children }) {
-    const [quantityCart, setQuantityCart] = useState(0);
+    const [state, dispatch] = useReducer(reducer, initialValue);
 
     return (
-        <QuantityCartContext.Provider value={[quantityCart, setQuantityCart]}>
+        <QuantityCartContext.Provider value={[state, dispatch]}>
             {children}
         </QuantityCartContext.Provider>
     )
