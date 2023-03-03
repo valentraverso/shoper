@@ -8,6 +8,7 @@ import Cart from "../views/pages/user/Cart.jsx";
 import Shop from "../views/pages/user/Shop.jsx";
 import Product from "../views/pages/user/Product.jsx";
 import Categories from "../views/pages/user/Categories.jsx";
+import HomeAdmin from "../views/pages/admin/HomeAdmin.jsx";
 
 // import Error from '../views/pages/error/Error';
 
@@ -46,9 +47,9 @@ const routes = [
     component: LayoutAdmin,
     routes: [
       {
-        path: "*",
-        exact: "false",
-        component: Home
+        path: "/",
+        exact: "exact",
+        component: HomeAdmin
       }
     ]
   }

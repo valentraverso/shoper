@@ -1,6 +1,8 @@
-function Main(){
+import { DOMSubRoutes } from "../../../routes/DOMRoutes"
+
+function Main({routes}){
     return (
-        <h1>Hola Deivid sos el ADMIN!</h1>
+       <DOMSubRoutes routes={routes} />
     )
 }
 
