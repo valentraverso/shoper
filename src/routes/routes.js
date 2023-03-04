@@ -9,6 +9,7 @@ import Shop from "../views/pages/user/Shop.jsx";
 import Product from "../views/pages/user/Product.jsx";
 import Categories from "../views/pages/user/Categories.jsx";
 import HomeAdmin from "../views/pages/admin/HomeAdmin.jsx";
+import Login from "../views/pages/user/Login.jsx";
 
 // import Error from '../views/pages/error/Error';
 
@@ -39,7 +40,11 @@ const routes = [
         path: "/cart",
         exact: true,
         component: Cart,
-      },
+      },{
+        path: 'login',
+        exact: true,
+        component: Login
+      }
     ]
   },{
     path: "/admin/*",
