@@ -1,15 +1,15 @@
 import NavBar from '../../components/NavBar/NavBar'
 import Footer from '../../components/Footer/Footer';
-import { DOMSubRoutes } from '../../../routes/DOMRoutes';
+import { PrivateRoutes } from '../../../routes/DOMRoutes';
 
-function Index({routes}){
+function UserLoged({routes}){
     return (
     <main>
         <NavBar />
-        <DOMSubRoutes routes={routes} />
+        <PrivateRoutes routes={routes} />
         <Footer />
     </main>
     );
 }
 
-export default Index
+export default UserLoged

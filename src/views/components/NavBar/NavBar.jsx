@@ -2,11 +2,14 @@ import { Link, NavLink } from "react-router-dom";
 import NavBarSpan from "./NavBarSpan/NavBarSpan.jsx";
 import CountCartProducts from "./CountCartProducts/CountCartProducts.jsx";
 import { localStorage } from "../../../utils/utils.js";
+import useSession from "../../../hooks/useSession.js";
 import './NavBar.css';
 
 const menu = [{ name: 'Boards', to: '/shop/cat/boards' }, { name: 'Sails', to: '/shop/cat/sails' }, { name: 'Booms', to: '/shop/cat/booms' }];
 
 function NavBar() {
+  const [state] = useSession();
+
   return (
     <header className='navbar__header'>
       <div className='logo__div'>
@@ -25,18 +28,23 @@ function NavBar() {
               )
             })
           }
-          <NavLink to='/cart'>
-              {
-
-                localStorage.cart !== undefined ?
+          {
+            state.loged ?
+              <>
+                <NavLink to='/user/cart'>
                   <CountCartProducts>
                     <NavBarSpan text='🛒' />
                   </CountCartProducts>
-                  :
-                  <NavBarSpan text='🛒' />
-
-              }
-          </NavLink>
+                </NavLink>
+                <NavLink to={'/user/profile'}>
+                  <NavBarSpan text='👤' />
+                </NavLink>
+              </>
+              :
+              <NavLink to={'/login'}>
+                <NavBarSpan text='Login' />
+              </NavLink>
+          }
         </div>
       </div>
     </header>

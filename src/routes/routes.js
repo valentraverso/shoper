@@ -1,6 +1,6 @@
 // Layout
-import LayoutUser from "../views/layouts/user/Index.jsx";
-import LayoutAdmin from "../views/layouts/admin/Index.jsx";
+import { UserDefault, UserLoged } from "../views/layouts/user/index.js";
+import LayoutAdmin from "../views/layouts/admin/Index";
 
 // Web Pages
 import Home from "../views/pages/user/Index.jsx";
@@ -18,35 +18,43 @@ const routes = [
   {
     path: "*",
     exact: false,
-    component: LayoutUser,
+    component: UserDefault,
     routes: [
       {
         path: "/",
         exact: true,
         component: Home,
-      },{
+      }, {
         path: "/shop/",
         exact: true,
         component: Shop,
-      },{
+      }, {
         path: "/shop/:productTitle",
         exact: false,
         component: Product,
-      },{
+      }, {
         path: "/shop/cat/:category",
         exact: false,
         component: Categories,
-      },{
-        path: "/cart",
+      }, {
+        path: '/login',
         exact: true,
-        component: Cart,
-      },{
-        path: 'login',
-        exact: true,
+        logedProhibited: true,
         component: Login
       }
     ]
-  },{
+  }, {
+    path: "/user/*",
+    exact: false,
+    component: UserLoged,
+    routes: [
+      {
+        path: "/cart",
+        exact: true,
+        component: Cart,
+      },
+    ]
+  }, {
     path: "/admin/*",
     exact: false,
     component: LayoutAdmin,

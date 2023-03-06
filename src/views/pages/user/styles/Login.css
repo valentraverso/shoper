@@ -1,0 +1,14 @@
+.form-login__div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 80vh;
+}
+
+.form-login__form{
+    display: flex;
+    flex-direction: column;
+
+    gap:20px;
+}

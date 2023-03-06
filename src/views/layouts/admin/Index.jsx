@@ -1,9 +1,9 @@
-import { DOMSubRoutes } from "../../../routes/DOMRoutes"
+import { PrivateRoutes } from "../../../routes/DOMRoutes"
 
-function Main({routes}){
+function LayoutAdmin({routes}){
     return (
-       <DOMSubRoutes routes={routes} />
+       <PrivateRoutes routes={routes} />
     )
 }
 
-export default Main
+export default LayoutAdmin

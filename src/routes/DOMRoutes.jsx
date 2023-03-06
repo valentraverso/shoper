@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import useSession from '../hooks/useSession.js';
 import routes from './routes.js'
 
 export function DOMRoutes() {
@@ -20,16 +21,46 @@ export function DOMRoutes() {
 }
 
 export function DOMSubRoutes({ routes }) {
-    return (
-      <Routes>
-        {routes.map((route, index) => (
-          <Route
-            key={index}
-            exact={route.exact}
-            path={route.path}
-            element={<route.component />}
-          />
-        ))}
-      </Routes>
-    )
-  }
+  const [state] = useSession();
+
+  return (
+    <Routes>
+      {routes.map((route, index) => (
+        <Route
+          key={index}
+          exact={route.exact}
+          path={route.path}
+          element={
+            route.logedProhibited && state.loged ?
+              <Navigate to={'/'} replace={true} />
+              :
+              <route.component />
+              
+          }
+        />
+      ))}
+    </Routes>
+  )
+}
+
+export function PrivateRoutes({ routes }) {
+  const [state] = useSession();
+
+  return (
+    <Routes>
+      {routes.map((route, index) => (
+        <Route
+          key={index}
+          exact={route.exact}
+          path={route.path}
+          element={
+              state.loged ?
+              <route.component />
+              :
+              <Navigate to={'/'} replace={true} />
+          }
+        />
+      ))}
+    </Routes>
+  )
+}
