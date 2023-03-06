@@ -25,3 +25,7 @@ export const loginUserValidate = async (emailForm, passwordForm) => {
         }
     }
 }
+
+export const logoutUser = () => {
+    localStorage.removeItem("userSession");
+}

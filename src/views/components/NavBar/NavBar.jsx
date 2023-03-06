@@ -1,14 +1,22 @@
+import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import NavBarSpan from "./NavBarSpan/NavBarSpan.jsx";
 import CountCartProducts from "./CountCartProducts/CountCartProducts.jsx";
-import { localStorage } from "../../../utils/utils.js";
 import useSession from "../../../hooks/useSession.js";
 import './NavBar.css';
+import MenuUser from "./HoverMenu/HoverMenu.jsx";
 
 const menu = [{ name: 'Boards', to: '/shop/cat/boards' }, { name: 'Sails', to: '/shop/cat/sails' }, { name: 'Booms', to: '/shop/cat/booms' }];
 
 function NavBar() {
   const [state] = useSession();
+  const [showMenu, setShowMenu] = useState(false);
+
+  const handleHoverMenu = (visible) => {
+    setTimeout(() => {
+      setShowMenu(visible)
+    }, 2000)
+  }
 
   return (
     <header className='navbar__header'>
@@ -36,9 +44,18 @@ function NavBar() {
                     <NavBarSpan text='🛒' />
                   </CountCartProducts>
                 </NavLink>
-                <NavLink to={'/user/profile'}>
-                  <NavBarSpan text='👤' />
-                </NavLink>
+                <div
+                  onMouseOver={() => setShowMenu(true)}
+                  onMouseLeave={() => handleHoverMenu(false)}
+                >
+                  <NavLink to={'/user/profile'}>
+                    <NavBarSpan text='👤' />
+                  </NavLink>
+                  <MenuUser 
+                  onMouseOver={() => setShowMenu(true)}
+                  onMouseLeave={() => handleHoverMenu(false)}
+                  visible={showMenu} />
+                </div>
               </>
               :
               <NavLink to={'/login'}>

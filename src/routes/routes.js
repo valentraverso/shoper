@@ -2,7 +2,7 @@
 import { UserDefault, UserLoged } from "../views/layouts/user/index.js";
 import LayoutAdmin from "../views/layouts/admin/Index";
 
-// Web Pages
+// Default Pages
 import Home from "../views/pages/user/Index.jsx";
 import Cart from "../views/pages/user/Cart.jsx";
 import Shop from "../views/pages/user/Shop.jsx";
@@ -11,8 +11,8 @@ import Categories from "../views/pages/user/Categories.jsx";
 import HomeAdmin from "../views/pages/admin/HomeAdmin.jsx";
 import Login from "../views/pages/user/Login.jsx";
 
-// import Error from '../views/pages/error/Error';
-
+// Loged User
+import {Profile} from '../views/pages/user/Loged/index'
 
 const routes = [
   {
@@ -52,7 +52,11 @@ const routes = [
         path: "/cart",
         exact: true,
         component: Cart,
-      },
+      },{
+        path: "/profile",
+        exact: true,
+        component: Profile
+      }
     ]
   }, {
     path: "/admin/*",

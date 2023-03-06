@@ -24,9 +24,6 @@ export default function Categories() {
         fetchProducts();
     }, [category])
 
-
-    console.log(objProducts)
-
     return (
         <ProductsSection loading={loading} catProduct={category} objProducts={objProducts} qCards="4" />
     )

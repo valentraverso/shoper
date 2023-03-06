@@ -1,0 +1,11 @@
+.hidden{
+    display: none;
+}
+
+.user-menu-hover__div{
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    text-align: center;
+    background: #cdcdcd;
+}
