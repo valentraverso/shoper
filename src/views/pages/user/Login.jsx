@@ -29,8 +29,8 @@ export default function Login() {
         loginUserValidate(inputEmail.current.value, inputPassword.current.value)
             .then(data => {
                 if (data.loged) {
-                    const { id, role } = data.userInfo
-                    dispatch({ type: ACTIONS_USER.SET_ALL, value: [true, id, role] })
+                    const { id, role, token } = data.userInfo
+                    dispatch({ type: ACTIONS_USER.SET_ALL, value: [true, id, role, token] })
                     return (<Navigate to="/" />)
                 } else {
                     setErrorMsg({ status: true, msg: data.msg })

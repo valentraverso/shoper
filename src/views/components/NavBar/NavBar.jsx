@@ -18,6 +18,10 @@ function NavBar() {
     }, 2000)
   }
 
+  useEffect(() => {
+    console.log(state)
+  }, [state])
+
   return (
     <header className='navbar__header'>
       <div className='logo__div'>
