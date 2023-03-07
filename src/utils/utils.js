@@ -107,6 +107,10 @@ const getCart = (prodArr) => {
 const getQuantityCart = () => {
     const cartStorage = JSON.parse(localStorage.getItem('cart'));
 
+    if(cartStorage === null) { 
+        return 0;
+    }
+
     const quantity = cartStorage.reduce((accumulator, current) => accumulator + current.quantity, 0);
 
     return quantity;

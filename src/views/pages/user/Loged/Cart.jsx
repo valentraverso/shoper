@@ -1,8 +1,8 @@
 import { useState } from "react";
-import QuantityOrder from "../../components/Cart/QuantityOrder/QuantityOrder";
-import CartDescription from "../../components/Cart/CartDescription/CartDescription";
-import CartContainer from '../../components/Cart/CartContainer';
-import MsgFullWidth from "../../components/PopUp/MsgFullWidth/MsgFullWidth";
+import QuantityOrder from "../../../components/Cart/QuantityOrder/QuantityOrder";
+import CartDescription from "../../../components/Cart/CartDescription/CartDescription";
+import CartContainer from '../../../components/Cart/CartContainer';
+import MsgFullWidth from "../../../components/PopUp/MsgFullWidth/MsgFullWidth";
 
 function Cart() {
     const [msg, setMsg] = useState(false);
