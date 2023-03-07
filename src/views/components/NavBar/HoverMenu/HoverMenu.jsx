@@ -1,19 +1,17 @@
-import useSession from '../../../../hooks/useSession';
-import { ACTIONS_USER } from '../../../../reducers/userReducers';
-import { logoutUser } from '../../../../utils/userUtils';
+import { useState } from 'react';
+import LogOutAlert from '../../alerts/LogOutAlert';
 import './HoverMenu.css';
 
 export default function HoverMenu({ visible }) {
-    const [state, dispatch] = useSession();
+    const [alertLogOut, setAlertLogOut] = useState(false);
 
     const handleLogOut = () => {
-        logoutUser();
-
-        dispatch({type: ACTIONS_USER.VERIFY_LOGIN})
+        setAlertLogOut(true);
     }
 
     return (
             <div className={visible ? "user-menu-hover__div" : "user-menu-hover__div hidden"}>
+                {alertLogOut && <LogOutAlert setAlertLogOut={setAlertLogOut} />}
                 <p onClick={handleLogOut}>Logout</p>
             </div>
     )

@@ -24,6 +24,7 @@ function Main(){
         fetchProducts();
     }, [catProduct])
 
+    
 
     return(
         <div className='main-page__div'>
