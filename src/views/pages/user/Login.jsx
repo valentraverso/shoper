@@ -9,7 +9,7 @@ export default function Login() {
     const [state, dispatch] = useSession();
 
     const [errorMsg, setErrorMsg] = useState({ status: false, msg: '' });
-    const [startingSession, setStartingSession] = useState(false);
+    const [spinnerLogin, setSpinnerLogin] = useState(false);
     const [emailValidator, setEmailValidator] = useState(false);
     const [emailError, setEmailError] = useState(false);
 
@@ -19,42 +19,40 @@ export default function Login() {
     const handleSubmit = (ev) => {
         ev.preventDefault();
 
-        if(!emailValidator){
+        if (!emailValidator) {
             inputEmail.current.focus();
             return;
         }
 
-        setStartingSession(prevState => !prevState)
+        setSpinnerLogin(prevState => !prevState)
 
         loginUserValidate(inputEmail.current.value, inputPassword.current.value)
             .then(data => {
                 if (data.loged) {
-                    const { id, role, token } = data.userInfo
-                    dispatch({ type: ACTIONS_USER.SET_ALL, value: [true, id, role, token] })
-                    return (<Navigate to="/" />)
+                    dispatch({ type: ACTIONS_USER.VERIFY_LOGIN })
                 } else {
                     setErrorMsg({ status: true, msg: data.msg })
                     setEmailValidator(false);
                 }
-                setStartingSession(prevState => !prevState)
+                setSpinnerLogin(prevState => !prevState)
             })
 
     }
 
-    const validateEmail = () =>{
-                if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(inputEmail.current.value)){
-                    setEmailValidator(true)
-                    setEmailError(false)
-                }else{
-                    setEmailValidator(false)
-                    setEmailError(true)
-                }
+    const validateEmail = () => {
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(inputEmail.current.value)) {
+            setEmailValidator(true)
+            setEmailError(false)
+        } else {
+            setEmailValidator(false)
+            setEmailError(true)
+        }
     }
 
     return (
         <div className="form-login__div">
             {
-                startingSession ?
+                spinnerLogin ?
                     <div>
                         <img src='https://upload.wikimedia.org/wikipedia/commons/c/c7/Loading_2.gif?20170503175831' />
                         <p>Starting Session</p>

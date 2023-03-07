@@ -1,6 +1,6 @@
 // Config
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import PrivateRoutes from "./PrivateRoutes";
+import {PrivateRoutes, ProhibitedRoutes} from "./RouteTypes";
 
 // Layouts
 import { UserDefault, UserLoged } from "../views/layouts/user";
@@ -32,7 +32,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/login',
-                element: <Login />
+                element: <ProhibitedRoutes><Login /></ProhibitedRoutes>
             }
         ]
     },
