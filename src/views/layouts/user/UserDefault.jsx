@@ -1,12 +1,12 @@
 import NavBar from '../../components/NavBar/NavBar'
 import Footer from '../../components/Footer/Footer';
-import { DOMSubRoutes } from '../../../routes/DOMRoutes';
+import { Outlet } from 'react-router-dom';
 
-function UserDefault({routes}){
+function UserDefault(){
     return (
     <main>
         <NavBar />
-        <DOMSubRoutes routes={routes} />
+            <Outlet />
         <Footer />
     </main>
     );

@@ -1,12 +1,12 @@
-import { DOMRoutes } from './routes/DOMRoutes.jsx';
 import CartContext from './context/QuantityCartContext.jsx';
 import UserContext from './context/UserContext.jsx';
+import Router from './routes/router.jsx';
 
 function App() {
   return (
     <UserContext>
       <CartContext>
-        <DOMRoutes />
+        <Router />
       </CartContext>
     </UserContext>
   )
