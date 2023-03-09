@@ -12,7 +12,6 @@ export default function Login() {
     const [spinnerLogin, setSpinnerLogin] = useState(false);
     const [emailValidator, setEmailValidator] = useState(false);
     const [emailError, setEmailError] = useState(false);
-    const [loged, setLoged] = useState(false);
 
     const inputEmail = useRef();
     const inputPassword = useRef();
@@ -30,14 +29,18 @@ export default function Login() {
         loginUserValidate(inputEmail.current.value, inputPassword.current.value)
             .then(data => {
                 if (data.loged) {
-                    verifyLogin();
-                    
-                    navigate('/', true);
+                    const redirect = async() => {
+                        await verifyLogin();
+                        navigate('/', true);
+                        setSpinnerLogin(prevState => !prevState)
+                    }
+
+                    redirect();
                 } else {
                     setErrorMsg({ status: true, msg: data.msg })
                     setEmailValidator(false);
+                    setSpinnerLogin(prevState => !prevState)
                 }
-                setSpinnerLogin(prevState => !prevState)
             })
     }
 

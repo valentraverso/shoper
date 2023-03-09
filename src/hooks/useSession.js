@@ -10,5 +10,5 @@ export default function useSession() {
         dispatch({ type: ACTIONS_USER.VERIFY_LOGIN, payload: await sessionData() })
     }
 
-    return { state, verifyLogin };
+    return { state, verifyLogin};
 }
