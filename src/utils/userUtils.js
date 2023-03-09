@@ -1,3 +1,5 @@
+import { setCookie } from "react-use-cookie";
+
 export const loginUserValidate = async (emailForm, passwordForm) => {
     const fetchUser = await fetch('https://apimocha.com/shoper/users');
     const response = await fetchUser.json();
@@ -5,12 +7,11 @@ export const loginUserValidate = async (emailForm, passwordForm) => {
     const coincidence = response.find(item => item.email === emailForm && item.password === passwordForm);
 
     if(coincidence){
-        const sessionData = {
-            id: coincidence.id,
-            role: coincidence.role,
-            token: coincidence.token,
-        }
-        localStorage.setItem("userSession", JSON.stringify(sessionData))
+        setCookie('session_token', token.toString(), {
+            days: 100,
+            path: '/',
+        })
+
         return {
             status: 200,
             loged: true,
@@ -27,5 +28,8 @@ export const loginUserValidate = async (emailForm, passwordForm) => {
 }
 
 export const logoutUser = () => {
-    localStorage.removeItem("userSession");
+    setCookie('session_token', '', {
+        days: 0,
+        path: '/'
+      })
 }

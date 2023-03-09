@@ -1,4 +1,4 @@
-import { getCookie, setCookie } from "react-use-cookie";
+import { getCookie} from "react-use-cookie";
 import fetchUserByToken from "../../api/fetchUserByToken";
 
 const userToken = getCookie('session_token');
