@@ -1,15 +1,17 @@
 import { useReducer, createContext } from "react";
 import { userReducers } from "../reducers/userReducers";
-import { initialValue } from "../reducers/user/getSession";
+import sessionData from "../reducers/user/getSession";
 
-export const CreateUserContext = createContext();
+export const AuthContext = createContext();
+
+const initialValue = await sessionData();
 
 export default function UserContext({ children }) {
   const [state, dispatch] = useReducer(userReducers, initialValue);
 
   return (
-    <CreateUserContext.Provider value={[state, dispatch]}>
+    <AuthContext.Provider value={[state, dispatch]}>
       {children}
-    </CreateUserContext.Provider>
+    </AuthContext.Provider>
   )
 }

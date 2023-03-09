@@ -1,21 +1,26 @@
-import { getCookie} from "react-use-cookie";
+import { getCookie } from "react-use-cookie";
 import fetchUserByToken from "../../api/fetchUserByToken";
 
-const userToken = getCookie('session_token');
 
-const loged = userToken
-  ? true
-  :
-  false
+export default async function sessionData(){
+  const userToken = getCookie('session_token');
 
-const { id = null, role = null, token = null } = userToken &&
-  await fetchUserByToken(userToken)
+  const loged = userToken || userToken.length > 0
+    ? true
+    :
+    false
 
-const initialValue = {
-  loged: loged,
-  idUser: id,
-  roleUser: role,
-  token: token,
+  const { id = null, role = null, token = null } = userToken &&
+    await fetchUserByToken(userToken)
+
+  const data = {
+    loged: loged,
+    idUser: id,
+    roleUser: role,
+    token: token,
+  }
+
+  return {
+    ...data
+  }
 }
-
-export { initialValue }

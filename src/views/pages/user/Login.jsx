@@ -31,14 +31,14 @@ export default function Login() {
             .then(data => {
                 if (data.loged) {
                     verifyLogin();
-                    navigate('/');
+                    
+                    navigate('/', true);
                 } else {
                     setErrorMsg({ status: true, msg: data.msg })
                     setEmailValidator(false);
                 }
                 setSpinnerLogin(prevState => !prevState)
             })
-
     }
 
     const validateEmail = () => {

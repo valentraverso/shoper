@@ -17,9 +17,11 @@ function NavBar() {
       setShowMenu(visible)
     }, 2000)
   }
-
-
+  
+  useEffect(() => {
     console.log(state)
+  }, [state])
+    
 
     
 
