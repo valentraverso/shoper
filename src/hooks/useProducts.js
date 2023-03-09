@@ -1,23 +1,23 @@
 import { useEffect, useState } from "react";
+import fetchProducts from "../api/fetchProducts";
 
-export default function useProducts(){
+export default function useProducts() {
     const [catProduct, setCatProduct] = useState();
-    const [apiUrl, setApiUrl] = useState();
-    const [loading, setLoading] = useState(false);
     const [objProducts, setObjProducts] = useState({});
-    
+    const [loading, setLoading] = useState(false);
+
     useEffect(() => {
         setLoading(true);
-        const fetchProducts = async () => {
-            const fetchApi = await fetch(apiUrl);
-            const response = await fetchApi.json();
 
-            setObjProducts(getProductsCategory(response, catProduct.toLowerCase()));
-            setLoading(false);
+        const getProducts = async () => {
+            const response = await fetchProducts(catProduct);
+
+            setObjProducts(response)
+            setLoading(false)
         }
 
-        fetchProducts();
+        getProducts();
     }, [catProduct])
 
-    return[setCatProduct, setApiUrl, objProducts, loading]
+    return { objProducts, catProduct, setCatProduct, loading }
 }

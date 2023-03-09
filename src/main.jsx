@@ -1,8 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App'
+import CartContext from './context/QuantityCartContext.jsx';
+import UserContext from './context/UserContext.jsx';
+import Router from './routes/router.jsx';
 import './main.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <App />
+    <UserContext>
+      <CartContext>
+        <Router />
+      </CartContext>
+    </UserContext>
 )

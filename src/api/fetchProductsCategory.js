@@ -1,4 +1,4 @@
-import { getProductsCategory } from "../utils/utils";
+
 const API_URL = 'https://apimocha.com/shoper/products';
 
 
