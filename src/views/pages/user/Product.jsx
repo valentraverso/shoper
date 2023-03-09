@@ -7,24 +7,12 @@ const URL_API = 'https://apimocha.com/shoper/products';
 
 export default function Product() {
     const { productTitle } = useParams();
-    const [product, setProduct] = useState({});
-    const [loading, setLoading] = useState(false);
+    const {setType, objProducts, setParameter, loading} = useProducts();
 
     useEffect(() => {
-        setLoading(true);
-
-        const fetchProducts = async () => {
-            const fetchApi = await fetch(URL_API);
-            const response = await fetchApi.json();
-            
-            setProduct(response.find((product) => {
-                return product.title == productTitle;
-            }));
-            setLoading(false);
-        }
-
-        fetchProducts();
-    }, [productTitle])
+        setType('product');
+        setParameter(productTitle);
+    }, [])
 
     return (
     <>
@@ -32,7 +20,7 @@ export default function Product() {
             loading ?
             <ProductPageSkeleton />
             :
-            <ProductPage objProduct={product} />
+            <ProductPage objProduct={objProducts} />
         }
     </>
     )

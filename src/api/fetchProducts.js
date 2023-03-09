@@ -1,16 +1,20 @@
 import { getProductsCategory } from "../utils/utils";
 const API_URL = 'https://apimocha.com/shoper/products';
 
-const fetchProducts = async (category) => {
+const fetchProducts = async (type, parameter = '') => {
     try {
         const fetchApi = await fetch(API_URL);
         const json = await fetchApi.json();
 
-        if(category !== ''){
-           return getProductsCategory(json, category.toLowerCase());
-        }else{
-            return json;
+        switch(type){
+            case 'all': 
+                return json;
+            case 'category':
+                return getProductsCategory(json, parameter.toLowerCase());
+            case 'product':
+                return response.find(({title}) => {return title == parameter;})
         }
+
     } catch (e) {
         console.log('Error While fetching category')
 
