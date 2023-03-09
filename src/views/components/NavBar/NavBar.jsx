@@ -9,7 +9,7 @@ import MenuUser from "./HoverMenu/HoverMenu.jsx";
 const menu = [{ name: 'Boards', to: '/shop/cat/boards' }, { name: 'Sails', to: '/shop/cat/sails' }, { name: 'Booms', to: '/shop/cat/booms' }];
 
 function NavBar() {
-  const [state] = useSession();
+  const {state} = useSession();
   const [showMenu, setShowMenu] = useState(false);
 
   const handleHoverMenu = (visible) => {
@@ -18,9 +18,9 @@ function NavBar() {
     }, 2000)
   }
 
-  useEffect(() => {
+
     console.log(state)
-  }, [state])
+
     
 
   return (

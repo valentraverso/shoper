@@ -4,9 +4,9 @@ export const loginUserValidate = async (emailForm, passwordForm) => {
     const fetchUser = await fetch('https://apimocha.com/shoper/users');
     const response = await fetchUser.json();
 
-    const coincidence = response.find(item => item.email === emailForm && item.password === passwordForm);
+    const {token} = response.find(item => item.email === emailForm && item.password === passwordForm);
 
-    if(coincidence){
+    if(token){
         setCookie('session_token', token.toString(), {
             days: 100,
             path: '/',
@@ -15,8 +15,7 @@ export const loginUserValidate = async (emailForm, passwordForm) => {
         return {
             status: 200,
             loged: true,
-            msg: 'Loged!',
-            userInfo: coincidence
+            msg: 'Loged!'
         }
     }else{
         return{

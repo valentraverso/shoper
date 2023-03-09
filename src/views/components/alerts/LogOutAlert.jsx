@@ -5,7 +5,7 @@ import withReactContent from 'sweetalert2-react-content';
 import { ACTIONS_USER } from '../../../reducers/userReducers';
 
 export default function LogOutAlert({setAlertLogOut}) {
-    const [state, dispatch] = useSession();
+    const {verifyLogin} = useSession();
 
     const MySwal = withReactContent(Swal)
 
@@ -23,7 +23,7 @@ export default function LogOutAlert({setAlertLogOut}) {
             )
             logoutUser();
 
-            dispatch({type: ACTIONS_USER.VERIFY_LOGIN})
+            verifyLogin();
 
             setAlertLogOut(false);
         }else{

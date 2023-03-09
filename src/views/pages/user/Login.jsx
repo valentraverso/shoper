@@ -1,12 +1,11 @@
 import { useRef, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useSession from '../../../hooks/useSession';
-import { ACTIONS_USER } from '../../../reducers/userReducers';
 import { loginUserValidate } from '../../../utils/userUtils';
 import './styles/Login.css';
 
 export default function Login() {
-    const [state, dispatch] = useSession();
+    const {verifyLogin} = useSession();
     const navigate = useNavigate();
 
     const [errorMsg, setErrorMsg] = useState({ status: false, msg: '' });
@@ -31,7 +30,7 @@ export default function Login() {
         loginUserValidate(inputEmail.current.value, inputPassword.current.value)
             .then(data => {
                 if (data.loged) {
-                    dispatch({ type: ACTIONS_USER.VERIFY_LOGIN });
+                    verifyLogin();
                     navigate('/');
                 } else {
                     setErrorMsg({ status: true, msg: data.msg })

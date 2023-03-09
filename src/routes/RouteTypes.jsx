@@ -2,7 +2,7 @@ import { Navigate } from "react-router-dom";
 import useSession from "../hooks/useSession";
 
 export function PrivateRoutes({ children }) {
-    const [state] = useSession();
+    const {state} = useSession();
 
     return (
         <>
@@ -17,7 +17,7 @@ export function PrivateRoutes({ children }) {
 }
 
 export function ProhibitedRoutes({ children }) {
-    const [state] = useSession();
+    const {state} = useSession();
 
     return (
         <>
