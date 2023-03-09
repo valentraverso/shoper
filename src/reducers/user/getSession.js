@@ -1,25 +1,21 @@
-const loged = localStorage.getItem("userSession")
+import { getCookie, setCookie } from "react-use-cookie";
+import fetchUserByToken from "../../api/fetchUserByToken";
+
+const userToken = getCookie('session_token');
+
+const loged = userToken
   ? true
   :
   false
 
-const user = localStorage.getItem("userSession")
-  ? JSON.parse(localStorage.getItem("userSession")).id
-  : null
-
-const role = localStorage.getItem("userSession")
-  ? JSON.parse(localStorage.getItem("userSession")).role
-  : null
-
-const token = localStorage.getItem("userSession")
-  ? JSON.parse(localStorage.getItem("userSession")).token
-  : null
+const { id = null, role = null, token = null } = userToken &&
+  await fetchUserByToken(userToken)
 
 const initialValue = {
-    loged: loged,
-    idUser: null || user,
-    roleUser: null || role,
-    token: null || token,
+  loged: loged,
+  idUser: id,
+  roleUser: role,
+  token: token,
 }
 
-export {initialValue}
+export { initialValue }

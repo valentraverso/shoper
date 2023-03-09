@@ -8,13 +8,10 @@ export const ACTIONS_USER = {
     SET_ROLE: 'set_role'
 }
 
-export function userReducers(state, action) {
+export function userReducers(state = initialValue, action) {
     switch (action.type) {
         case ACTIONS_USER.VERIFY_LOGIN:
-            return{
-                initialValue
-            }
-            break;
+            return initialValue;  
         case ACTIONS_USER.SET_ALL:
             return {
                 ...state,
@@ -28,20 +25,18 @@ export function userReducers(state, action) {
                 ...state,
                 loged: action.value
             }
-            break;
         case ACTIONS_USER.SET_USER_ID:
             return {
                 ...state,
                 idUser: action.value
             }
-            break;
         case ACTIONS_USER.SET_ROLE:
             return {
                 ...state,
                 roleUser: action.value
             }
-            break;
         default:
-            throw new Error('Invalid action');
+            initialValue;
+            break;
     }
 }

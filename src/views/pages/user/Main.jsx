@@ -1,34 +1,34 @@
-import { useState, useEffect } from 'react';
-import { getProductsCategory } from '../../../utils/utils.js';
+import { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query'
+import fetchProductsCategory from '../../../api/fetchProductsCategory.js';
 import HeroesSection from "../../components/HeroesSection/HeroesSection.jsx";
 import ProductsSection from "../../components/Products/ProductsSection/ProductsSection";
 import HeroSkeleton from '../../components/Skeletons/HeroSkeleton.jsx';
 import './styles/Index.css';
 
-const URL_API = 'https://apimocha.com/shoper/products';
-
 function Main() {
-    const [catProduct, setCatProduct] = useState("Boards");
-    const [loading, setLoading] = useState(false);
     const [loadingHero, setLoadingHeroe] = useState(true);
+    const [catProduct, setCatProduct] = useState('boards');
     const [objProducts, setObjProducts] = useState({});
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         setLoading(true);
-        const fetchProducts = async () => {
-            const fetchApi = await fetch(URL_API);
-            const response = await fetchApi.json();
 
-            setObjProducts(getProductsCategory(response, catProduct.toLowerCase()));
-            setLoading(false);
+        const getProducts = async () => {
+            const response = await fetchProductsCategory(catProduct);
+            setObjProducts(response) 
+            setLoading(false)
         }
 
-        fetchProducts();
+        getProducts();
+
+        return;
     }, [catProduct])
 
     setTimeout(() => {
         setLoadingHeroe(false);
-    }, 2000)
+    }, 1500)
 
     return (
         <div className='main-page__div'>

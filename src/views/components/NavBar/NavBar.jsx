@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import NavBarSpan from "./NavBarSpan/NavBarSpan.jsx";
 import CountCartProducts from "./CountCartProducts/CountCartProducts.jsx";
@@ -17,6 +17,11 @@ function NavBar() {
       setShowMenu(visible)
     }, 2000)
   }
+
+  useEffect(() => {
+    console.log(state)
+  }, [state])
+    
 
   return (
     <header className='navbar__header'>
