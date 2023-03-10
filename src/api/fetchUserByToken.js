@@ -1,8 +1,6 @@
-const API_URL = 'https://apimocha.com/shoper/users';
-
 const fetchUserByToken = async (tokenCookie) => {
     try {
-        const fetchApi = await fetch(API_URL);
+        const fetchApi = await fetch(`${import.meta.env.VITE_API_URL}/users`);
         const json = await fetchApi.json();
 
         return json.find(({token}) => token === tokenCookie);

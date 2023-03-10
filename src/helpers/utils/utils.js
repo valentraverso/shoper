@@ -1,3 +1,4 @@
+import fetchAllProducts from "../../api/fetchAllProducts";
 const localStorage = window.localStorage;
 
 const AddProduct = (idProduct, quantity) => {
@@ -78,30 +79,32 @@ const DeleteProductCart = (idProduct) => {
     }
 }
 
-const getCart = (prodArr) => {
+const getCart = async () => {
     const JsonCart = JSON.parse(localStorage.getItem('cart'));
 
-    const filterById = (obj) => {
-        if (JsonCart?.find(product => product.idProduct === obj.id)) {
-            return true
-        } else {
-            return false;
+        const productsObj = await fetchAllProducts();
+
+        const filterById = (obj) => {
+            if (JsonCart.find(product => product.idProduct === obj.id)) {
+                return true
+            } else {
+                return false;
+            }
         }
-    }
-    const arr = prodArr.filter(filterById);
+        const arr = productsObj.filter(filterById);
+    
+        const cart = [];
+    
+        arr.map((item) => {
+            const actualProduct = JsonCart.find(product => product.idProduct == item.id);
+            
+            const quantity = actualProduct.quantity;
+            const totalPrice = item.price * quantity;
+    
+            cart.push({ ...item, totalPrice, quantity })
+        })
 
-    const newArrProduct = [];
-
-    arr.map((item, index) => {
-        const actualProduct = JsonCart.find(product => product.idProduct == item.id);
-        
-        const quantity = actualProduct.quantity;
-        const totalPrice = item.price * quantity;
-
-        newArrProduct.push({ ...item, totalPrice, quantity })
-    })
-
-    return newArrProduct;
+    return cart;
 }
 
 const getQuantityCart = () => {
