@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import useProducts from "../../../helpers/hooks/useProducts";
 import ProductsSection from "../../components/Products/ProductsSection/ProductsSection";
-import useProducts from '../../../hooks/useProducts.js';
-
 
 export default function Categories() {
     const { category } = useParams();

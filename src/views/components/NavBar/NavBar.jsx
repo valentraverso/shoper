@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import NavBarSpan from "./NavBarSpan/NavBarSpan.jsx";
 import CountCartProducts from "./CountCartProducts/CountCartProducts.jsx";
-import useSession from "../../../hooks/useSession.js";
 import './NavBar.css';
 import MenuUser from "./HoverMenu/HoverMenu.jsx";
+import useSession from "../../../helpers/hooks/useSession.js";
 
 const menu = [{ name: 'Boards', to: '/shop/cat/boards' }, { name: 'Sails', to: '/shop/cat/sails' }, { name: 'Booms', to: '/shop/cat/booms' }];
 

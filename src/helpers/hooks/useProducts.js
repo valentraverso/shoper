@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import fetchProducts from "../api/fetchProducts";
+import fetchProducts from "../../api/fetchProducts";
 
 export default function useProducts() {
     // Which type of data do you want (all, category, product)
@@ -13,16 +13,18 @@ export default function useProducts() {
     const [objProducts, setObjProducts] = useState({});
     const [loading, setLoading] = useState(false);
 
-    setLoading(true);
+    useEffect(() => {
+        setLoading(true);
 
-    const getProducts = async () => {
-        const response = await fetchProducts(type, parameter);
+        const getProducts = async () => {
+            const response = await fetchProducts(type, parameter);
 
-        setObjProducts(response)
-        setLoading(false)
-    }
+            setObjProducts(response)
+            setLoading(false)
+        }
 
-    getProducts();
+        getProducts();
+    }, [parameter]);
 
     console.log(objProducts)
 

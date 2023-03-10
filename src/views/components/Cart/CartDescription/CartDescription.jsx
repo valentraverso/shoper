@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getCart } from "../../../../utils/utils";
-import useCart from "../../../../hooks/useCart";
+import { getCart } from "../../../../helpers/utils/utils";
+import useCart from "../../../../helpers/hooks/useCart";
 import AddToCart from "../../Buttons/AddToCart/AddToCart";
-import prodArr from "../../../../mocks/prodArr";
 
 export default function CartDescription(){
     const [totalPrice, setTotalPrice] = useState(0);

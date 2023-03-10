@@ -1,7 +1,9 @@
 const fetchSingleProduct = async (idProduct) => {
     try{
-        const response = await fetch(`${import.meta.env.API_URL}/products/${idProduct}`)
-        return response.json();
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/products`)
+        const json = await response.json();
+
+        return json.find((item) => {return item.id == idProduct});
     } catch (e) {
         return {
             status: 400,

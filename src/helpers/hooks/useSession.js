@@ -1,7 +1,7 @@
-import { useContext, useState } from "react";
-import { AuthContext } from "../context/UserContext";
-import { ACTIONS_USER } from "../reducers/userReducers";
-import sessionData from '../reducers/user/getSession.js';
+import { useContext } from "react";
+import { ACTIONS_USER } from "../../context/reducers/userReducers";
+import sessionData from '../../context/reducers/user/getSession.js';
+import { AuthContext } from "../../context/UserContext";
 
 export default function useSession() {
     const [state, dispatch] = useContext(AuthContext);

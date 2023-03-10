@@ -1,8 +1,7 @@
-import { logoutUser } from '../../../utils/userUtils';
-import useSession from '../../../hooks/useSession';
+import { logoutUser } from '../../../helpers/utils/userUtils';
+import useSession from '../../../helpers/hooks/useSession';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import { ACTIONS_USER } from '../../../reducers/userReducers';
 
 export default function LogOutAlert({setAlertLogOut}) {
     const {verifyLogin} = useSession();

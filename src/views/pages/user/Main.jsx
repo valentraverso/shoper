@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import useProducts from '../../../hooks/useProducts.js';
+import useProducts from '../../../helpers/hooks/useProducts.js';
 import HeroesSection from "../../components/HeroesSection/HeroesSection.jsx";
 import ProductsSection from "../../components/Products/ProductsSection/ProductsSection";
 import HeroSkeleton from '../../components/Skeletons/HeroSkeleton.jsx';
