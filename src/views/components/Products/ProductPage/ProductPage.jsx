@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { AddProduct, getProductsCategory } from '../../../../utils/utils';
-import useCart from '../../../../hooks/useCart';
+import { AddProduct, getProductsCategory } from '../../../../helpers/utils/utils';
+import useCart from '../../../../helpers/hooks/useCart';
 import AddToCart from '../../Buttons/AddToCart/AddToCart';
 import MsgFullWidth from '../../PopUp/MsgFullWidth/MsgFullWidth';
 import ProductsSection from '../ProductsSection/ProductsSection';
-import prodArr from '../../../../mocks/prodArr';
+import prodArr from '../../../../api/mocks/prodArr';
 import './ProductPage.css';
 
 export default function ProductPage({ objProduct }) {

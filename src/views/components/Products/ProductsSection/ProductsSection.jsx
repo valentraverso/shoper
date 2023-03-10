@@ -17,9 +17,9 @@ function ProductsSection({ catProduct, objProducts, qCards, loading }) {
                     :
                     <div className={productsCards} onClick={() => scrollTo(top)}>
                         {
-                            objProducts.length > 0 ? objProducts.map((product, index) => {
+                            objProducts?.length > 0 ? objProducts.map((product, index) => {
                                 return (
-                                    <Link key={index} to={`http://localhost:5173/shop/${product.title}`}>
+                                    <Link key={index} to={`http://localhost:5173/shop/${product.id}`}>
                                         <ProductsCard key={index} img={product.img} price={product.price} title={product.title} />
                                     </Link>
                                 )

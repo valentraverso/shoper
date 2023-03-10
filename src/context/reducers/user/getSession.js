@@ -1,5 +1,5 @@
 import { getCookie } from "react-use-cookie";
-import fetchUserByToken from "../../api/fetchUserByToken";
+import fetchUserByToken from "../../../api/fetchUserByToken";
 
 
 export default async function sessionData(){

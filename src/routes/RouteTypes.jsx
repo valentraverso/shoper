@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import useSession from "../hooks/useSession";
+import useSession from "../helpers/hooks/useSession";
 
 export function PrivateRoutes({ children }) {
     const {state} = useSession();

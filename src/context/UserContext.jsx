@@ -1,6 +1,6 @@
 import { useReducer, createContext } from "react";
-import { userReducers } from "../reducers/userReducers";
-import sessionData from "../reducers/user/getSession";
+import {userReducers} from './reducers/userReducers'
+import sessionData from "./reducers/user/getSession";
 
 export const AuthContext = createContext();
 

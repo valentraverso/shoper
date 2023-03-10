@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useSession from '../../../hooks/useSession';
-import { loginUserValidate } from '../../../utils/userUtils';
+import useSession from '../../../helpers/hooks/useSession';
+import {loginUserValidate} from '../../../helpers/utils/userUtils'
 import './styles/Login.css';
 
 export default function Login() {

@@ -1,38 +1,24 @@
+import { useQuery } from '@tanstack/react-query';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ProductPage from '../../components/Products/ProductPage/ProductPage';
 import ProductPageSkeleton from '../../components/Skeletons/ProductPageSkeleton';
-
-const URL_API = 'https://apimocha.com/shoper/products';
+import fetchSingleProduct from '../../../api/fetchSingleProducts';
 
 export default function Product() {
-    const { productTitle } = useParams();
-    const [product, setProduct] = useState({});
-    const [loading, setLoading] = useState(false);
-
-    useEffect(() => {
-        setLoading(true);
-
-        const fetchProducts = async () => {
-            const fetchApi = await fetch(URL_API);
-            const response = await fetchApi.json();
-            
-            setProduct(response.find((product) => {
-                return product.title == productTitle;
-            }));
-            setLoading(false);
-        }
-
-        fetchProducts();
-    }, [productTitle])
+    const { productId } = useParams();
+    
+    const {data: objProducts, isLoading} = useQuery(['productId', productId], async() => {
+        return await fetchSingleProduct(productId)
+    })
 
     return (
     <>
         {
-            loading ?
+            isLoading ?
             <ProductPageSkeleton />
             :
-            <ProductPage objProduct={product} />
+            <ProductPage objProduct={objProducts} />
         }
     </>
     )

@@ -1,7 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import { QuantityCartContext } from '../../../../context/QuantityCartContext';
-import { AddProduct, RestProduct, getCart, DeleteProductCart } from '../../../../utils/utils';
-import prodArr from '../../../../mocks/prodArr.js';
+import { AddProduct, RestProduct, getCart, DeleteProductCart } from '../../../../helpers/utils/utils';
 import './QuantityOrder.css';
 
 export default function QuantityOrder({deleteMsg}) {
