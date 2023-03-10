@@ -1,18 +1,16 @@
-import { useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import useProducts from "../../../helpers/hooks/useProducts";
+import fetchProductsCategory from "../../../api/fetchProductsCategory";
 import ProductsSection from "../../components/Products/ProductsSection/ProductsSection";
 
 export default function Categories() {
     const { category } = useParams();
-    const {setType, objProducts, setParameter, loading} = useProducts();
-
-    useEffect(() => {
-        setType('category');
-        setParameter(category);
-    }, [category])
+    
+    const {data: objProducts, isLoading} = useQuery(['category'], async () => {
+        return await fetchProductsCategory(category);
+    })
 
     return (
-        <ProductsSection loading={loading} catProduct={category} objProducts={objProducts} qCards="4" />
+        <ProductsSection loading={isLoading} catProduct={category} objProducts={objProducts} qCards="4" />
     )
 }

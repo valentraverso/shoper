@@ -1,13 +1,11 @@
-
-const API_URL = 'https://apimocha.com/shoper/products';
-
+import { getProductsCategory } from "../helpers/utils/utils";
 
 const fetchProductsCategory = async (category) => {
     try {
-        const fetchApi = await fetch(API_URL);
-        const json = fetchApi.json();
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/products`);
+        const json = await response.json();
 
-        return getProductsCategory(await json, category.toLowerCase());
+        return getProductsCategory(json, category.toLowerCase());
     } catch (e) {
         console.log('Error While fetching category')
 

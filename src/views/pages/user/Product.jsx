@@ -11,6 +11,8 @@ export default function Product() {
     const {data: objProducts, isLoading} = useQuery(['product'], async() => {
         return await fetchSingleProduct(productId)
     })
+    
+    console.log(isLoading)
 
     return (
     <>
