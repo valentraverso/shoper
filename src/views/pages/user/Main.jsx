@@ -10,7 +10,7 @@ function Main() {
     const [loadingHero, setLoadingHeroe] = useState(true);
     const [catProduct, setCatProduct] = useState('boards');
     
-    const {data: objProducts, isLoading} = useQuery(['category'], async () => {
+    const {data: objProducts, isLoading} = useQuery(['category', catProduct], async () => {
         return await fetchProductsCategory(catProduct);
     })
 
