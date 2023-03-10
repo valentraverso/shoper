@@ -3,7 +3,7 @@ const API_URL = 'https://apimocha.com/shoper/products';
 
 const fetchProducts = async (type, parameter = '') => {
     try {
-        const fetchApi = await fetch(API_URL);
+        const fetchApi = await fetch(`${API_URL}`);
         const json = await fetchApi.json();
 
         switch(type){

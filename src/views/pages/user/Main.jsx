@@ -7,11 +7,11 @@ import './styles/Index.css';
 
 function Main() {
     const [loadingHero, setLoadingHeroe] = useState(true);
-    const {setType, objProducts, catProduct, setParameter, loading} = useProducts();
+    const {setType, objProducts, parameter: catProduct, setParameter: setCatProduct, loading} = useProducts();
 
     useEffect(() => {
         setType('category');
-        setParameter('boards');
+        setCatProduct('boards');
     }, [])
 
 
