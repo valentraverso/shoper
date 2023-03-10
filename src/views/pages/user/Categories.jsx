@@ -11,7 +11,7 @@ export default function Categories() {
     useEffect(() => {
         setType('category');
         setParameter(category);
-    }, [])
+    }, [category])
 
     return (
         <ProductsSection loading={loading} catProduct={category} objProducts={objProducts} qCards="4" />
