@@ -37,3 +37,7 @@
     width: 30px;
     cursor: pointer;
 }
+
+.spinner-fetching__img{
+    width: 1em;
+}

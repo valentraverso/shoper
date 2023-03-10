@@ -9,7 +9,7 @@ import { getCart } from "../../../../helpers/utils/utils";
 function Cart() {
     const [msg, setMsg] = useState(false);
 
-    const { data: cart, isLoading } = useQuery(['cart'], async () => {
+    const { data: cart, isLoading, isRefetching, refetch } = useQuery(['cart'], async () => {
         return await getCart();
     })
 
@@ -32,8 +32,14 @@ function Cart() {
                         <p>Cargando</p>
                         :
                         <>
-                            <QuantityOrder cart={cart} deleteMsg={() => deleteMsg()} />
-                            <CartDescription cart={cart}/>
+                            <QuantityOrder 
+                            cart={cart} 
+                            isRefetching={isRefetching} 
+                            deleteMsg={() => deleteMsg()} 
+                            refetch={refetch} />
+                            <CartDescription 
+                            cart={cart}
+                            isRefetching={isRefetching} />
                         </>
                 }
 
