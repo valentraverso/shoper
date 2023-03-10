@@ -1,4 +1,4 @@
-import { getProductsCategory } from "../utils/utils";
+import { getProductsCategory } from "../helpers/utils/utils";
 const API_URL = 'https://apimocha.com/shoper/products';
 
 const fetchProducts = async (type, parameter = '') => {
