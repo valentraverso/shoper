@@ -1,5 +1,6 @@
+import { useQuery } from '@tanstack/react-query';
 import { useState, useEffect } from 'react';
-import useProducts from '../../../helpers/hooks/useProducts.js';
+import fetchProductsCategory from '../../../api/fetchProductsCategory.js';
 import HeroesSection from "../../components/HeroesSection/HeroesSection.jsx";
 import ProductsSection from "../../components/Products/ProductsSection/ProductsSection";
 import HeroSkeleton from '../../components/Skeletons/HeroSkeleton.jsx';
@@ -7,13 +8,11 @@ import './styles/Index.css';
 
 function Main() {
     const [loadingHero, setLoadingHeroe] = useState(true);
-    const {setType, objProducts, parameter: catProduct, setParameter: setCatProduct, loading} = useProducts();
-
-    useEffect(() => {
-        setType('category');
-        setCatProduct('boards');
-    }, [])
-
+    const [catProduct, setCatProduct] = useState('boards');
+    
+    const {data: objProducts, isLoading} = useQuery(['category'], async () => {
+        return await fetchProductsCategory(catProduct);
+    })
 
     setTimeout(() => {
         setLoadingHeroe(false);
@@ -29,7 +28,7 @@ function Main() {
                     changeCat={catProduct => { setCatProduct(catProduct) }} />
             }
 
-            <ProductsSection loading={loading} catProduct={catProduct} objProducts={objProducts} qCards="4" />
+            <ProductsSection loading={isLoading} catProduct={catProduct} objProducts={objProducts} qCards="4" />
         </div>
     )
 }

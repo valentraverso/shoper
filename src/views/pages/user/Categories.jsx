@@ -6,7 +6,7 @@ import ProductsSection from "../../components/Products/ProductsSection/ProductsS
 export default function Categories() {
     const { category } = useParams();
     
-    const {data: objProducts, isLoading} = useQuery(['category'], async () => {
+    const {data: objProducts, isLoading} = useQuery(['category', category], async () => {
         return await fetchProductsCategory(category);
     })
 

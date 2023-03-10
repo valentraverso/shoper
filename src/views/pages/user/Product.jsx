@@ -8,11 +8,9 @@ import fetchSingleProduct from '../../../api/fetchSingleProducts';
 export default function Product() {
     const { productId } = useParams();
     
-    const {data: objProducts, isLoading} = useQuery(['product'], async() => {
+    const {data: objProducts, isLoading} = useQuery(['productId', productId], async() => {
         return await fetchSingleProduct(productId)
     })
-    
-    console.log(isLoading)
 
     return (
     <>

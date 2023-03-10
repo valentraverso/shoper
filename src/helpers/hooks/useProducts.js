@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import fetchProducts from "../../api/fetchProducts";
+import fetchProducts from "../../api/fetchAllProducts";
 
 export default function useProducts() {
     // Which type of data do you want (all, category, product)
