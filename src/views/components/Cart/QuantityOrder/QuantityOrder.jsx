@@ -1,15 +1,15 @@
 import { useState, useEffect, useContext } from 'react';
 import { QuantityCartContext } from '../../../../context/QuantityCartContext';
-import { AddProduct, RestProduct, getCart, DeleteProductCart } from '../../../../helpers/utils/utils';
+import { AddProduct, RestProduct, DeleteProductCart } from '../../../../helpers/utils/utils';
 import './QuantityOrder.css';
 
-export default function QuantityOrder({deleteMsg}) {
+export default function QuantityOrder({deleteMsg, cart}) {
     const [quantityCart, setQuantityCart] = useContext(QuantityCartContext);
-    const [cart, setCart] = useState(getCart(prodArr));
+    // const [cart, setCart] = useState(getCart());
 
-    useEffect(() => {
-        setCart(getCart(prodArr));
-    }, [quantityCart])
+    // useEffect(() => {
+    //     setCart(getCart(prodArr));
+    // }, [quantityCart])
 
     const handleAdd = (id, quantity) => {
         AddProduct(id, quantity);
@@ -33,7 +33,7 @@ export default function QuantityOrder({deleteMsg}) {
                     cart.length === 0 ?
                         <h1>Add products to your cart!</h1>
                         :
-                        cart.map(({ title, img, totalPrice, id, quantity }, index) => {
+                        cart?.map(({ title, img, totalPrice, id, quantity }, index) => {
                             return (
                                 <div className='product-cart__div' key={index}>
                                     <div className="product-cart-img__div">

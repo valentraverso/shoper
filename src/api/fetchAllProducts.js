@@ -1,28 +1,17 @@
-import { getProductsCategory } from "../helpers/utils/utils";
-const API_URL = 'https://apimocha.com/shoper/products';
-
-const fetchProducts = async (type, parameter = '') => {
+const fetchAllProducts = async () => {
     try {
-        const fetchApi = await fetch(`${API_URL}`);
+        const fetchApi = await fetch(`${import.meta.env.VITE_API_URL}/products`);
         const json = await fetchApi.json();
 
-        switch(type){
-            case 'all': 
-                return json;
-            case 'category':
-                return getProductsCategory(json, parameter.toLowerCase());
-            case 'product':
-                return response.find(({title}) => {return title == parameter;})
-        }
-
+        return json;
     } catch (e) {
         console.log('Error While fetching category')
 
-        return{
+        return {
             status: 400,
             msg: 'We couldn\'t find results'
         }
     }
 }
 
-export default fetchProducts;
+export default fetchAllProducts;

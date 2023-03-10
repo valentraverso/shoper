@@ -4,12 +4,12 @@ import { getCart } from "../../../../helpers/utils/utils";
 import useCart from "../../../../helpers/hooks/useCart";
 import AddToCart from "../../Buttons/AddToCart/AddToCart";
 
-export default function CartDescription(){
+export default function CartDescription({cart}){
     const [totalPrice, setTotalPrice] = useState(0);
     const [quantityCart, setQuantityCart] = useCart();
 
     useEffect(() => {
-        const quantity = getCart(prodArr).reduce((acc, sum) => acc + sum.totalPrice, 0);
+        const quantity = cart.reduce((acc, sum) => acc + sum.totalPrice, 0);
         setTotalPrice(quantity);
     }, [quantityCart]);
 
