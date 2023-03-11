@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import LogOutAlert from '../../alerts/LogOutAlert';
+import LogOutAlert from '../../PopUp/LogOutAlert';
 import './HoverMenu.css';
 
 export default function HoverMenu({ visible }) {
