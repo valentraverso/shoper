@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import QuantityOrder from "../../../components/Cart/QuantityOrder/QuantityOrder";
 import CartDescription from "../../../components/Cart/CartDescription/CartDescription";
 import CartContainer from '../../../components/Cart/CartContainer';
-import MsgFullWidth from "../../../components/PopUp/MsgFullWidth/MsgFullWidth";
+import {MsgFullWidth} from "../../../components/PopUp";
 import { getCart } from "../../../../helpers/utils/utils";
 
 function Cart() {
@@ -21,10 +21,8 @@ function Cart() {
     return (
         <>
             {
-                msg ?
+                msg ??
                     <MsgFullWidth msg='Products deleted from the cart' type='error' />
-                    :
-                    null
             }
             <CartContainer>
                 {

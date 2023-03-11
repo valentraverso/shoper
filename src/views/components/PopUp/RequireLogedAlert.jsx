@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 
-export default function LogOutAlert({setAlertLogOut}) {
+export function RequireLogedAlert({setLoginRequirePopUp}) {
     const MySwal = withReactContent(Swal)
     const navigate = useNavigate();
 
@@ -16,6 +16,8 @@ export default function LogOutAlert({setAlertLogOut}) {
     }).then((result) => {
         if (result.isConfirmed) {
             navigate('/login')
+        }else{
+            setLoginRequirePopUp(false)
         }
     })
 }
