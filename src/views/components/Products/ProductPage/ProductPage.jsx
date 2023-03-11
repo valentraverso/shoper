@@ -5,12 +5,15 @@ import AddToCart from '../../Buttons/AddToCart/AddToCart';
 import MsgFullWidth from '../../PopUp/MsgFullWidth/MsgFullWidth';
 import ProductsSection from '../ProductsSection/ProductsSection';
 import prodArr from '../../../../api/mocks/prodArr';
+import useSession from '../../../../helpers/hooks/useSession';
 import './ProductPage.css';
 
 export default function ProductPage({ objProduct }) {
+    const {state} = useSession();
+    const [quantityCart, setQuantityCart] = useCart();
+
     const [quantity, setQuantity] = useState(0);
     const [msgReady, setMsgReady] = useState(false);
-    const [quantityCart, setQuantityCart] = useCart();
 
     const { id, title, img, category } = objProduct;
 
@@ -25,7 +28,12 @@ export default function ProductPage({ objProduct }) {
         setQuantity(prevState => prevState - 1);
     }
 
-    const add = () => {
+    const addToCart = () => {
+        if(!state?.loged){
+            console.error('no logeado')
+            return;
+        }
+
         AddProduct(id, quantity);
         setQuantityCart(prevState => prevState + quantity);
         setQuantity(0);
@@ -54,7 +62,7 @@ export default function ProductPage({ objProduct }) {
                         <span className='quantity-visor__span'>{quantity === 0 ? 0 : quantity}</span>
                         <span className="quantity-handler__span" onClick={sum}>+</span>
                     </div>
-                    <div onClick={() => quantity !== 0 ? add() : null}>
+                    <div onClick={() => quantity !== 0 ? addToCart() : null}>
                         <AddToCart text='Add To Cart' />
                     </div>
                 </div>
