@@ -10,7 +10,7 @@ import './ProductPage.css';
 
 export default function ProductPage({ objProduct }) {
     const { state } = useSession();
-    const [setQuantityCart] = useCart();
+    const [quantityCart, setQuantityCart] = useCart();
 
     const [loginRequirePopUp, setLoginRequirePopUp] = useState(false)
     const [quantity, setQuantity] = useState(0);
