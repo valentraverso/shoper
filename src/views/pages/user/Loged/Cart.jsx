@@ -21,8 +21,10 @@ function Cart() {
     return (
         <>
             {
-                msg ??
+                msg ?
                     <MsgFullWidth msg='Products deleted from the cart' type='error' />
+                :
+                null
             }
             <CartContainer>
                 {

@@ -3,4 +3,5 @@
     flex-direction: row;
 
     margin: 2% 10%;
+    min-height: 75vh;
 }
